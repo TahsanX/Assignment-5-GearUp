@@ -37,6 +37,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const queryClient = useQueryClient();
 
   // Hydrate from storage, then confirm the token is still valid server-side.
+  // These setState calls must run after hydration: localStorage and the auth
+  // cookie do not exist during SSR, so the session cannot be part of the
+  // initial render. That is what this effect is for, not a cascading render.
+  /* eslint-disable react-hooks/set-state-in-effect */
   useEffect(() => {
     const cached = readStoredUser();
     if (cached) setUser(cached);
@@ -68,6 +72,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       cancelled = true;
     };
   }, []);
+  /* eslint-enable react-hooks/set-state-in-effect */
 
   const login = useCallback(
     (nextUser: User, token: string) => {
