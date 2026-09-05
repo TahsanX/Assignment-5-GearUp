@@ -9,6 +9,14 @@ the platform — each with a role-specific dashboard.
 > Assignment 5 (Frontend). The backend lives in a separate repository and is
 > consumed over REST.
 
+## Live
+
+| | |
+|---|---|
+| Frontend | <https://gearup-frontend-black.vercel.app> |
+| Backend API | <https://gearup-backend-nine-psi.vercel.app/api> |
+| Frontend repo | <https://github.com/TahsanX/Assignment-5-GearUp> |
+
 ---
 
 ## Tech stack
